@@ -1,5 +1,6 @@
 
 class Grid {
+    static int countX = 0, countO = 0, count_ = 0;
     static char[][] GridPattern(String choices){
        char[][] tictactoe = new char[3][3];
         
@@ -7,6 +8,13 @@ class Grid {
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3 ; j++){
                 tictactoe[i][j] = choices.charAt(j + index);
+                if(tictactoe[i][j] == 'X'){
+                    countX++;
+                }
+                else if(tictactoe[i][j] == 'O'){
+                    countO++;
+                }
+                else count_++;
             }
             index += 3;
         }

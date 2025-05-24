@@ -1,5 +1,8 @@
+package OldMistake;
 public class Game {
     char WinDiagonal(char[][] choices){
+
+        
         if(choices[0][0] == 'X' && choices[1][1] == 'X' && choices[2][2] == 'X'){
             return 'X';
         }

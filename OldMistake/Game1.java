@@ -1,10 +1,11 @@
+package OldMistake;
 public class Game1 {
     static boolean WinDiagonal(char[][] choices){
         int count1 = 0, count2 = 0;
         boolean s =  false;
         char c1 = choices[0][0];
         char c2 = choices[2][0];
-
+       
         for(int i = 0; i < 3; i++){
             for(int j =0; j < 3; j++){
                if(i == j){
@@ -75,23 +76,25 @@ public class Game1 {
     static boolean column(char[][] choices){
         int count = 0;
         char c = 'a';
-        boolean s = false;
+        boolean s = true;
         for(int i = 0; i < 3; i++){
             count = 0;
+            c = choices[0][i];
             for(int j =0; j < 3; j++){
-                c = choices[j][i];
+                
                 if(choices[j][i] == c){
                     
                     count++;
                 }
                 else break;
             }
-            if(count == 2){
-                s = true;
-                System.out.println("Winsrow " + c);
+            if(count == 3){
+                
+                System.out.println(c + "wins");
+                return true;
             }
         }
-        return s;
+        return false;
     }
 
 }
