@@ -1,13 +1,15 @@
 
 class Grid {
     static int countX = 0, countO = 0, count_ = 0;
+
+
     static char[][] GridPattern(String choices){
        char[][] tictactoe = new char[3][3];
-        
+       
         int index = 0;
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3 ; j++){
-                tictactoe[i][j] = choices.charAt(j + index);
+                tictactoe[i][j] = (choices.charAt(j + index) == '_' ? ' ' : choices.charAt(j + index)) ;
                 if(tictactoe[i][j] == 'X'){
                     countX++;
                 }
@@ -19,9 +21,21 @@ class Grid {
             index += 3;
         }
         return tictactoe;
-        
-        
     }
+
+
+    static char[][] fillGrid(int row , int column, char[][] tictactoe){
+        
+        tictactoe[row][column] = 'X';
+
+    
+        return tictactoe;
+        
+
+    }
+
+
+
     static void printGrid(char[][] tictactoe){
         System.out.println("---------");
         for(int i = 0; i < 3; i++){
