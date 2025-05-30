@@ -1,37 +1,42 @@
+package TicTacToe;
 
 
-import java.util.Scanner;
 
-public class Main {
+
+class Main {
     public static void main(String[] args){
-        Scanner input = new Scanner(System.in);
+      
      
         boolean s = true;
        
-        int a = GamePlay.countO; 
-        int b = GamePlay.countX;
-        
+        int a = 0; 
+        int b = 0;
+        System.out.println("GameStarted");
         InputHandler.gameStart();
-        while(true){ 
-            System.out.println("GameStarted");
+        GamePlay.defaultBoard();
+        
+
+        while(s){ 
+            InputHandler.processActions();
             
 
-            InputHandler.processActions();
 
-        
-            if(a > 3 || b > 3 ){
+            a = GamePlay.countX;
+            b = GamePlay.countO;
+
+            if(a >= 3 || b >= 3 ){
                 s = GamePlay.WinDiagonal();
-                if(!s){
+                if(s){
                     s = GamePlay.row();
                 
                 }
-                else if(!s){
+                if(s){
                     s = GamePlay.column();
 
                 }
             
             
-                else{ 
+                if(s && a+b == 9){ 
                     System.out.println(a + b);
                     System.out.println("Draw");
                     

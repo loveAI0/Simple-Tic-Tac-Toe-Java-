@@ -1,23 +1,21 @@
-
-
+package TicTacToe;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 public class InputHandler {
 
-    static private char[][] tictactoe = new char[3][3];
-    static private int countO = 0, countX = 0;
-    
-    
-  
     static void gameStart(){
-        tictactoe = GamePlay.printGrid();
+        String board = """
+                ---------
+                |       |
+                |       |
+                |       |
+                --------- """;
+        System.out.println(board);
     }
    
 
-    
-
-   static void processActions(){
+    static void processActions(){
         Scanner input = new Scanner(System.in);
         
         
@@ -26,17 +24,22 @@ public class InputHandler {
         try{
                 
             System.out.println("row: ");
+            
             row = input.nextInt();
             
             
             System.out.println("column: ");
             column = input.nextInt();
-            input.nextLine();
 
-            System.out.println("Move");
-            move = input.next().charAt(0);
+        
+
+            int i = row - 1;
+            int j = column - 1;
+
             
-            System.out.println(move);
+            
+           
+            
 
             if(row < 1 || row > 3 || column < 1 || column > 3){
                 System.out.println("Coordinates should be from 1 to 3!");
@@ -44,16 +47,19 @@ public class InputHandler {
                 
             }
             
-            else if(tictactoe[row - 1][column - 1] != ' '){ 
+            else if(GamePlay.choices[i][j] != ' '){ 
+                System.out.println(GamePlay.choices[i][j]);
                 System.out.println("This cell is occupied! Choose another one!");
                 processActions();
                
             }
             else {
-                int i = row - 1;
-                int j = column - 1;
+                System.out.println("Move");
+                move = input.next().charAt(0);
+                
                 Grid grid = new Grid(i, j, move);
                 GamePlay.fillGrid(grid);
+                GamePlay.printGrid();
                 
 
             }
@@ -62,6 +68,7 @@ public class InputHandler {
             System.out.println("You should enter numbers!");
             processActions();
         }
+        
     }
 }
 
